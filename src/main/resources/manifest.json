@@ -1,20 +1,18 @@
 {
-  "Group": "dev.hytalemodding",
-  "Name": "ExamplePlugin",
+  "Group": "com.tikaiz",
+  "Name": "Hytale Plugin Demo",
   "Version": "${version}",
   "Description": "Description of your plugin",
   "Authors": [
     {
-      "Name": "Your Name",
-      "Email": "your.email@example.com",
-      "Url": "https://your-website.com"
+      "Name": "Tikaiz",
+      "Email": "tikaiz@gmx.at"
     }
   ],
-  "Website": "https://your-plugin-website.com",
   "ServerVersion": "*",
   "Dependencies": {},
   "OptionalDependencies": {},
   "DisabledByDefault": false,
   "IncludesAssetPack": false,
-  "Main": "dev.hytalemodding.ExamplePlugin"
+  "Main": "com.tikaiz.HytaleDemo"
 }
