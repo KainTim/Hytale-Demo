@@ -1,4 +1,4 @@
-package com.tikaiz;
+package com.tikaiz.singletons;
 
 import com.hypixel.hytale.logger.HytaleLogger;
 

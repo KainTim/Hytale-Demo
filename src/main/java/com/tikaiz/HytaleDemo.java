@@ -2,11 +2,14 @@ package com.tikaiz;
 
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
-import com.hypixel.hytale.server.core.universe.world.events.AllWorldsLoadedEvent;
 import com.tikaiz.commands.ExampleCommand;
+import com.tikaiz.components.EndermanTeleportComponent;
+import com.tikaiz.singletons.LoggerSingleton;
+import com.tikaiz.systems.AddDefaultComponentTickSystem;
+import com.tikaiz.systems.CustomComponentTickSystem;
+import com.tikaiz.systems.DamageEventSystem;
 
 import javax.annotation.Nonnull;
-import java.util.logging.Level;
 
 public class HytaleDemo extends JavaPlugin {
 

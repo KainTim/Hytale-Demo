@@ -1,4 +1,4 @@
-package com.tikaiz;
+package com.tikaiz.components;
 
 import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
@@ -7,8 +7,8 @@ import javax.annotation.Nullable;
 
 public class EndermanTeleportComponent implements Component<EntityStore> {
 
-    private float tickInterval = 5f;
-    private float elapsedTime = 0f;
+    private final float tickInterval;
+    private float elapsedTime;
 
     public EndermanTeleportComponent(float tickInterval, float elapsedTime) {
         this.tickInterval = tickInterval;
@@ -40,6 +40,7 @@ public class EndermanTeleportComponent implements Component<EntityStore> {
         this.elapsedTime = 0f;
     }
 
+    @SuppressWarnings("MethodDoesntCallSuperMethod")
     @Nullable
     @Override
     public Component<EntityStore> clone() {

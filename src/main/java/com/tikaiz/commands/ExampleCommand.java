@@ -2,30 +2,22 @@ package com.tikaiz.commands;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.math.vector.Vector3f;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.arguments.system.DefaultArg;
-import com.hypixel.hytale.server.core.command.system.arguments.system.OptionalArg;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
-import com.hypixel.hytale.server.core.modules.entity.component.DisplayNameComponent;
 import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
 import com.hypixel.hytale.server.core.modules.entity.teleport.Teleport;
-import com.hypixel.hytale.server.core.modules.physics.component.PhysicsValues;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.hypixel.hytale.server.core.universe.Universe;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.tikaiz.LoggerSingleton;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.logging.Level;
 
 public class ExampleCommand extends AbstractPlayerCommand {
 
@@ -33,7 +25,7 @@ public class ExampleCommand extends AbstractPlayerCommand {
         super("tel", "Super test command!");
     }
 
-    DefaultArg<List<Double>> arg = this.withListDefaultArg("Pos", "Position", ArgTypes.DOUBLE,new ArrayList<Double>(),"Tell the Player the Position");
+    DefaultArg<List<Double>> arg = this.withListDefaultArg("Pos", "Position", ArgTypes.DOUBLE, new ArrayList<>(),"Tell the Player the Position");
 
     @Override
     protected void execute(@Nonnull CommandContext commandContext,
