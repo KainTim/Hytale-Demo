@@ -12,10 +12,10 @@ import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 import java.util.logging.Level;
 
-public class AddDefaultComponentTickSystem extends EntityTickingSystem<EntityStore> {
+public class AddEndermanTeleportComponentTickSystem extends EntityTickingSystem<EntityStore> {
     private final ComponentType<EntityStore, EndermanTeleportComponent> customComponentType;
 
-    public AddDefaultComponentTickSystem(ComponentType<EntityStore, EndermanTeleportComponent> poisonComponentType) {
+    public AddEndermanTeleportComponentTickSystem(ComponentType<EntityStore, EndermanTeleportComponent> poisonComponentType) {
         this.customComponentType = poisonComponentType;
     }
     @Override
@@ -31,7 +31,6 @@ public class AddDefaultComponentTickSystem extends EntityTickingSystem<EntitySto
         }
         DisplayNameComponent displayNameComponent = store.getComponent(ref, DisplayNameComponent.getComponentType());
         if (displayNameComponent == null || displayNameComponent.getDisplayName() == null) {
-//            LoggerSingleton.getInstance().getHytaleLogger().at(Level.INFO).log("Added Component to ref!");
             return;
         }
         var displayName = displayNameComponent.getDisplayName().getAnsiMessage();

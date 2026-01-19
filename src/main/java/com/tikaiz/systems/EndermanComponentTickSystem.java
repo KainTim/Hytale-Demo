@@ -3,7 +3,11 @@ package com.tikaiz.systems;
 import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.tick.EntityTickingSystem;
+import com.hypixel.hytale.math.vector.Vector3d;
+import com.hypixel.hytale.math.vector.Vector3f;
 import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
+import com.hypixel.hytale.server.core.modules.entity.teleport.Teleport;
+import com.hypixel.hytale.server.core.universe.world.ParticleUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.tikaiz.components.EndermanTeleportComponent;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
@@ -11,10 +15,10 @@ import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
 import static com.tikaiz.helpers.TeleportHelper.randomTeleport;
 
-public class CustomComponentTickSystem extends EntityTickingSystem<EntityStore> {
+public class EndermanComponentTickSystem extends EntityTickingSystem<EntityStore> {
     private final ComponentType<EntityStore, EndermanTeleportComponent> customComponentType;
 
-    public CustomComponentTickSystem(ComponentType<EntityStore, EndermanTeleportComponent> poisonComponentType) {
+    public EndermanComponentTickSystem(ComponentType<EntityStore, EndermanTeleportComponent> poisonComponentType) {
         this.customComponentType = poisonComponentType;
     }
 
@@ -34,8 +38,12 @@ public class CustomComponentTickSystem extends EntityTickingSystem<EntityStore> 
         endermanTeleportComponent.addElapsedTime(dt);
         if (endermanTeleportComponent.getElapsedTime() >= endermanTeleportComponent.getTickInterval()) {
             endermanTeleportComponent.resetElapsedTime();
+            ParticleUtil.spawnParticleEffect("Effect_Death",transformComponent.getPosition(),commandBuffer);
+            Vector3d newPos = randomTeleport(transformComponent.getPosition());
+            ParticleUtil.spawnParticleEffect("Effect_Death",transformComponent.getPosition(),commandBuffer);
 
-            randomTeleport(commandBuffer, ref, transformComponent.getPosition());
+            Teleport teleportForPlayer = Teleport.createForPlayer(newPos, new Vector3f());
+            commandBuffer.addComponent(ref, Teleport.getComponentType(), teleportForPlayer);
         }
     }
 

@@ -57,28 +57,8 @@ public class ExampleCommand extends AbstractPlayerCommand {
 
         Teleport teleportForPlayer = Teleport.createForPlayer(newPos, new Vector3f());
         store.addComponent(ref,Teleport.getComponentType(),teleportForPlayer);
-//        var results = new ArrayList<Object>();
-//        store.fetch();
-
-//        transform.setPosition(newPos);
 
         playerRef.sendMessage(Message.raw("Set Player Position to: " + newPos));
-
-
-//        String message = messageArg.get(commandContext); // get the argument text by the player
-//        playerRef.sendMessage(Message.raw("Player Name: " + playerRef.getUsername()));
-//        var mass = store.getComponent(ref, PhysicsValues.getComponentType()).getMass();
-//        playerRef.sendMessage(Message.raw("Player Mass: " + mass));
-//        var archetype = store.getArchetype(ref);
-//        playerRef.sendMessage(Message.raw("Archetype count: "+archetype.length()));
-//        for (int i = 0; i < archetype.length(); i++) {
-//            var type = archetype.get(i);
-//            if (type!=null){
-//                var typeClass =  type.getTypeClass();
-//                playerRef.sendMessage(Message.raw("Type class: "+typeClass));
-//                LoggerSingleton.getInstance().getHytaleLogger().at(Level.INFO).log("Type class: "+typeClass);
-//            }
-//        }
     }
 
 }
