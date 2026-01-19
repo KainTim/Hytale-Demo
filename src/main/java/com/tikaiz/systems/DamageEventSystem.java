@@ -35,13 +35,7 @@ public class DamageEventSystem extends EntityEventSystem<EntityStore, Damage> {
         Ref<EntityStore> ref = archetypeChunk.getReferenceTo(i);
         TransformComponent transformComponent = store.getComponent(ref, TransformComponent.getComponentType());
         assert transformComponent != null;
-        var displayNameComponent = store.getComponent(ref, DisplayNameComponent.getComponentType());
-        assert displayNameComponent != null;
-        assert displayNameComponent.getDisplayName() != null;
-        var name = displayNameComponent.getDisplayName().getAnsiMessage();
 
-
-        NotificationUtil.sendNotificationToUniverse(name);
         if (Math.random() < 0.3) {
             var transform = transformComponent.getTransform();
             ParticleUtil.spawnParticleEffect("Effect_Death",transform.getPosition(),commandBuffer);
@@ -55,6 +49,6 @@ public class DamageEventSystem extends EntityEventSystem<EntityStore, Damage> {
     @NullableDecl
     @Override
     public Query<EntityStore> getQuery() {
-        return Query.and(TransformComponent.getComponentType(), DisplayNameComponent.getComponentType(), endermanTeleportComponentType);
+        return Query.and(TransformComponent.getComponentType(), endermanTeleportComponentType);
     }
 }
