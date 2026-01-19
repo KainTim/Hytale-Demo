@@ -13,10 +13,10 @@ import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import java.util.logging.Level;
 
 public class AddEndermanTeleportComponentTickSystem extends EntityTickingSystem<EntityStore> {
-    private final ComponentType<EntityStore, EndermanTeleportComponent> customComponentType;
+    private final ComponentType<EntityStore, EndermanTeleportComponent> endermanComponentType;
 
-    public AddEndermanTeleportComponentTickSystem(ComponentType<EntityStore, EndermanTeleportComponent> poisonComponentType) {
-        this.customComponentType = poisonComponentType;
+    public AddEndermanTeleportComponentTickSystem(ComponentType<EntityStore, EndermanTeleportComponent> endermanComponentType) {
+        this.endermanComponentType = endermanComponentType;
     }
     @Override
     public void tick(float dt,
@@ -25,25 +25,20 @@ public class AddEndermanTeleportComponentTickSystem extends EntityTickingSystem<
                      @NonNullDecl Store<EntityStore> store,
                      @NonNullDecl CommandBuffer<EntityStore> commandBuffer) {
         Ref<EntityStore> ref = archetypeChunk.getReferenceTo(i);
-        EndermanTeleportComponent component = store.getComponent(ref, customComponentType);
-        if (component != null) {
-            return;
-        }
         DisplayNameComponent displayNameComponent = store.getComponent(ref, DisplayNameComponent.getComponentType());
-        if (displayNameComponent == null || displayNameComponent.getDisplayName() == null) {
-            return;
-        }
+        assert displayNameComponent != null;
+        assert displayNameComponent.getDisplayName() != null;
         var displayName = displayNameComponent.getDisplayName().getAnsiMessage();
         if (!"Bunny".equals(displayName)){
             return;
         }
-        commandBuffer.addComponent(ref, customComponentType, new EndermanTeleportComponent());
+        commandBuffer.addComponent(ref, endermanComponentType, new EndermanTeleportComponent());
         LoggerSingleton.getInstance().getHytaleLogger().at(Level.INFO).log("Added Component to ref: " + displayName);
     }
 
     @NullableDecl
     @Override
     public Query<EntityStore> getQuery() {
-        return Query.and(DisplayNameComponent.getComponentType());
+        return Query.and(DisplayNameComponent.getComponentType(),Query.not(endermanComponentType));
     }
 }

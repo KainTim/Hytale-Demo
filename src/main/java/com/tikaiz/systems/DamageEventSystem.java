@@ -16,6 +16,7 @@ import com.tikaiz.components.EndermanTeleportComponent;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
+import static com.tikaiz.helpers.TeleportHelper.EndermanTeleport;
 import static com.tikaiz.helpers.TeleportHelper.randomTeleport;
 
 public class DamageEventSystem extends EntityEventSystem<EntityStore, Damage> {
@@ -37,12 +38,7 @@ public class DamageEventSystem extends EntityEventSystem<EntityStore, Damage> {
         assert transformComponent != null;
 
         if (Math.random() < 0.3) {
-            var transform = transformComponent.getTransform();
-            ParticleUtil.spawnParticleEffect("Effect_Death",transform.getPosition(),commandBuffer);
-            Vector3d newPos = randomTeleport(transform.getPosition());
-            ParticleUtil.spawnParticleEffect("Effect_Death",transform.getPosition(),commandBuffer);
-            Teleport teleportForPlayer = Teleport.createForPlayer(newPos, new Vector3f());
-            commandBuffer.addComponent(ref, Teleport.getComponentType(), teleportForPlayer);
+            EndermanTeleport(ref,transformComponent.getPosition(),commandBuffer);
         }
     }
 

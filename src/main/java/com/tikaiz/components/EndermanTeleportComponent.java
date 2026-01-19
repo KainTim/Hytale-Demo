@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 public class EndermanTeleportComponent implements Component<EntityStore> {
 
-    private final float tickInterval;
+    private float tickInterval;
     private float elapsedTime;
 
     public EndermanTeleportComponent(float tickInterval, float elapsedTime) {
@@ -17,6 +17,7 @@ public class EndermanTeleportComponent implements Component<EntityStore> {
 
     public EndermanTeleportComponent() {
         this(10f, 0f);
+        randomizeTickInterval();
     }
 
     public EndermanTeleportComponent(EndermanTeleportComponent other) {
@@ -45,5 +46,9 @@ public class EndermanTeleportComponent implements Component<EntityStore> {
     @Override
     public Component<EntityStore> clone() {
         return new EndermanTeleportComponent(this);
+    }
+
+    public void randomizeTickInterval() {
+        tickInterval = (float) ((Math.random()*5)+25);
     }
 }
