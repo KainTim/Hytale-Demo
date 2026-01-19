@@ -11,9 +11,9 @@ import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 import java.util.logging.Level;
 
 public class AddDefaultComponentTickSystem extends EntityTickingSystem<EntityStore> {
-    private final ComponentType<EntityStore, CustomComponent> customComponentType;
+    private final ComponentType<EntityStore, EndermanTeleportComponent> customComponentType;
 
-    public AddDefaultComponentTickSystem(ComponentType<EntityStore, CustomComponent> poisonComponentType) {
+    public AddDefaultComponentTickSystem(ComponentType<EntityStore, EndermanTeleportComponent> poisonComponentType) {
         this.customComponentType = poisonComponentType;
     }
     @Override
@@ -23,7 +23,7 @@ public class AddDefaultComponentTickSystem extends EntityTickingSystem<EntitySto
                      @NonNullDecl Store<EntityStore> store,
                      @NonNullDecl CommandBuffer<EntityStore> commandBuffer) {
         Ref<EntityStore> ref = archetypeChunk.getReferenceTo(i);
-        CustomComponent component = store.getComponent(ref, customComponentType);
+        EndermanTeleportComponent component = store.getComponent(ref, customComponentType);
         if (component != null) {
             return;
         }
@@ -36,13 +36,13 @@ public class AddDefaultComponentTickSystem extends EntityTickingSystem<EntitySto
         if (!"Bunny".equals(displayName)){
             return;
         }
-        commandBuffer.addComponent(ref, customComponentType, new CustomComponent());
+        commandBuffer.addComponent(ref, customComponentType, new EndermanTeleportComponent());
         LoggerSingleton.getInstance().getHytaleLogger().at(Level.INFO).log("Added Component to ref: " + displayName);
     }
 
     @NullableDecl
     @Override
     public Query<EntityStore> getQuery() {
-        return Query.any();
+        return Query.and(DisplayNameComponent.getComponentType());
     }
 }
