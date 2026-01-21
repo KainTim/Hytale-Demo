@@ -27,10 +27,13 @@ public class DamageEventSystem extends EntityEventSystem<EntityStore, Damage> {
                        @NonNullDecl CommandBuffer<EntityStore> commandBuffer,
                        @NonNullDecl Damage damage) {
         Ref<EntityStore> ref = archetypeChunk.getReferenceTo(i);
-        TransformComponent transformComponent = store.getComponent(ref, TransformComponent.getComponentType());
+        var transformComponent = store.getComponent(ref, TransformComponent.getComponentType());
         assert transformComponent != null;
+        var endermanComponent = store.getComponent(ref, endermanTeleportComponentType);
+        assert endermanComponent != null;
 
-        if (Math.random() < 0.3) {
+        endermanComponent.resetElapsedTime();
+        if (Math.random() < 0.15) {
             EndermanTeleport(ref,transformComponent.getPosition(),commandBuffer);
         }
     }

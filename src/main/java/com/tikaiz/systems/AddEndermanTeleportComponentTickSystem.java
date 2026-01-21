@@ -29,11 +29,11 @@ public class AddEndermanTeleportComponentTickSystem extends EntityTickingSystem<
         assert displayNameComponent != null;
         assert displayNameComponent.getDisplayName() != null;
         var displayName = displayNameComponent.getDisplayName().getAnsiMessage();
-        if (!"Bunny".equals(displayName)){
+        if (!"Enderman".equals(displayName)){
             return;
         }
         commandBuffer.addComponent(ref, endermanComponentType, new EndermanTeleportComponent());
-        HytaleLogger.getLogger().atInfo().log("Added Component to ref: " + displayName);
+//        HytaleLogger.getLogger().atInfo().log("Added Component to ref: " + displayName);
     }
 
     @NullableDecl
