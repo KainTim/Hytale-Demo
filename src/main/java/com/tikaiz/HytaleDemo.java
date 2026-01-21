@@ -4,7 +4,6 @@ import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.tikaiz.commands.ExampleCommand;
 import com.tikaiz.components.EndermanTeleportComponent;
-import com.tikaiz.singletons.LoggerSingleton;
 import com.tikaiz.systems.AddEndermanTeleportComponentTickSystem;
 import com.tikaiz.systems.EndermanComponentTickSystem;
 import com.tikaiz.systems.DamageEventSystem;
@@ -15,7 +14,6 @@ public class HytaleDemo extends JavaPlugin {
 
     public HytaleDemo(@Nonnull JavaPluginInit init) {
         super(init);
-        LoggerSingleton.getInstance().setHytaleLogger(this.getLogger());
     }
 
     @Override

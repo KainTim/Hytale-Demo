@@ -22,5 +22,6 @@ public abstract class TeleportHelper {
 
         Teleport teleportForPlayer = Teleport.createForPlayer(newPos, new Vector3f());
         commandBuffer.addComponent(ref, Teleport.getComponentType(), teleportForPlayer);
+
     }
 }

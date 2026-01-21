@@ -3,10 +3,10 @@ package com.tikaiz.systems;
 import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.tick.EntityTickingSystem;
+import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.modules.entity.component.DisplayNameComponent;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.tikaiz.components.EndermanTeleportComponent;
-import com.tikaiz.singletons.LoggerSingleton;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
 
@@ -33,7 +33,7 @@ public class AddEndermanTeleportComponentTickSystem extends EntityTickingSystem<
             return;
         }
         commandBuffer.addComponent(ref, endermanComponentType, new EndermanTeleportComponent());
-        LoggerSingleton.getInstance().getHytaleLogger().at(Level.INFO).log("Added Component to ref: " + displayName);
+        HytaleLogger.getLogger().atInfo().log("Added Component to ref: " + displayName);
     }
 
     @NullableDecl

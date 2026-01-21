@@ -49,6 +49,6 @@ public class EndermanTeleportComponent implements Component<EntityStore> {
     }
 
     public void randomizeTickInterval() {
-        tickInterval = (float) ((Math.random()*5)+25);
+        tickInterval = (float) ((Math.random()*20)+10);
     }
 }
