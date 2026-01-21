@@ -1,0 +1,39 @@
+{
+  "Type": "Variant",
+  "Reference": "Template_Intelligent",
+  "Modify": {
+    "MaxHealth": 92,
+    "HearingRange": 8,
+    "ViewSector": 270,
+    "WakingPeriod": [
+      0,
+      24
+    ],
+    "DropList": "Drop_Skeleton",
+    "Appearance": "Enderman",
+    "Weapons": [],
+    "OffHand": [],
+    "AttackDistance": 2,
+    "DesiredAttackDistanceRange": [
+      1,
+      1.6
+    ],
+    "CombatBehaviorDistance": 3,
+    "CombatStrafeWeight": 5,
+    "CombatBackOffDistanceRange": [
+      1,
+      2
+    ],
+    "BlockProbability": 50,
+    "BreathesInWater": true,
+    "NameTranslationKey": {
+      "Compute": "NameTranslationKey"
+    }
+  },
+  "Parameters": {
+    "NameTranslationKey": {
+      "Value": "Enderman",
+      "Description": "Translation key for NPC name display"
+    }
+  }
+}
