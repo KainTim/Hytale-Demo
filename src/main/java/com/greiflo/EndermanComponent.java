@@ -1,26 +1,26 @@
-package com.tikaiz.components;
+package com.greiflo;
 
 import com.hypixel.hytale.component.Component;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nullable;
 
-public class EndermanTeleportComponent implements Component<EntityStore> {
+public class EndermanComponent implements Component<EntityStore> {
 
     private float tickInterval;
     private float elapsedTime;
 
-    public EndermanTeleportComponent(float tickInterval, float elapsedTime) {
+    public EndermanComponent(float tickInterval, float elapsedTime) {
         this.tickInterval = tickInterval;
         this.elapsedTime = elapsedTime;
     }
 
-    public EndermanTeleportComponent() {
+    public EndermanComponent() {
         this(10f, 0f);
         randomizeTickInterval();
     }
 
-    public EndermanTeleportComponent(EndermanTeleportComponent other) {
+    public EndermanComponent(EndermanComponent other) {
         this.tickInterval = other.tickInterval;
         this.elapsedTime = other.elapsedTime;
     }
@@ -45,10 +45,10 @@ public class EndermanTeleportComponent implements Component<EntityStore> {
     @Nullable
     @Override
     public Component<EntityStore> clone() {
-        return new EndermanTeleportComponent(this);
+        return new EndermanComponent(this);
     }
 
     public void randomizeTickInterval() {
-        tickInterval = (float) ((Math.random()*20)+10);
+        tickInterval = (float) ((Math.random()*25)+5);
     }
 }

@@ -1,18 +1,23 @@
 {
-  "Group": "com.tikaiz",
-  "Name": "Hytale Plugin Demo",
+  "Group": "com.greiflo",
+  "Name": "EndermanPlugin",
   "Version": "${version}",
-  "Description": "Description of your plugin",
+  "Description": "Enderman Plugin",
   "Authors": [
     {
-      "Name": "Tikaiz",
+      "Name": "greiflo",
+      "Email": "grflo7228@gmail.com"
+    },
+    {
+      "Name": "tikaiz",
       "Email": "tikaiz@gmx.at"
     }
   ],
+  "Website": "",
   "ServerVersion": "*",
   "Dependencies": {},
   "OptionalDependencies": {},
   "DisabledByDefault": false,
   "IncludesAssetPack": false,
-  "Main": "com.tikaiz.HytaleDemo"
+  "Main": "com.greiflo.EndermanPlugin"
 }
