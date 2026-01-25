@@ -2,7 +2,7 @@
   "Parent": "Player",
   "Model": "Items/Enderman/Enderman.blockymodel",
   "Texture": "Items/Enderman/base.png",
-  "EyeHeight": 1.6,
+  "EyeHeight": 0,
   "CrouchOffset": -0.4,
   "HitBox": {
     "Max": {
@@ -11,9 +11,9 @@
       "Z": 0.3
     },
     "Min": {
-      "X": -0.3,
       "Y": 0,
-      "Z": -0.3
+      "Z": -0.3,
+      "X": -0.3
     }
   },
   "AnimationSets": {
@@ -46,9 +46,10 @@
     "Run": {
       "Animations": [
         {
-          "Animation": "NPC/Undead/Skeleton/Animations/Default/Run.blockyanim",
-          "Speed": 0.9,
-          "SoundEventId": "SFX_Skeleton_Run"
+          "Animation": "Items/Enderman/walk.blockyanim",
+          "Speed": 2,
+          "SoundEventId": "SFX_Skeleton_Run",
+          "Looping": true
         }
       ]
     },
@@ -356,24 +357,10 @@
     "Death": {
       "Animations": [
         {
-          "Animation": "NPC/Undead/Skeleton/Animations/Damage/Death.blockyanim",
-          "Looping": false,
-          "SoundEventId": "SFX_Skeleton_Death_1"
-        },
-        {
-          "Animation": "NPC/Undead/Skeleton/Animations/Damage/Death2.blockyanim",
-          "Looping": false,
-          "SoundEventId": "SFX_Skeleton_Death_2"
-        },
-        {
-          "Animation": "NPC/Undead/Skeleton/Animations/Damage/Death3.blockyanim",
-          "Looping": false,
-          "SoundEventId": "SFX_Skeleton_Death_3"
-        },
-        {
-          "Animation": "NPC/Undead/Skeleton/Animations/Damage/Death4.blockyanim",
-          "Looping": false,
-          "SoundEventId": "SFX_Skeleton_Death_4"
+          "Animation": "Items/Enderman/dying.blockyanim",
+          "Looping": true,
+          "SoundEventId": "SFX_Skeleton_Death_4",
+          "Speed": 1
         }
       ]
     },
@@ -460,6 +447,9 @@
     }
   },
   "GradientSet": "Colored_Cotton",
+  "PhysicsValues": {
+    "InvertedGravity": false
+  },
   "DefaultAttachments": [
     {}
   ]

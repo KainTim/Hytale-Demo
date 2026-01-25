@@ -1,0 +1,23 @@
+{
+  "Group": "MyEnderman",
+  "Name": "Enderman",
+  "Version": "0.1.0",
+  "Description": "This mod adds the Enderman to Hytale! It spawns in Zone1 and teleports around. It also attacks you if you get near. UNDER CONSTRUCTION!",
+  "Authors": [
+    {
+        "Name": "greiflo",
+        "Email": "grflo7228@gmail.com"    
+    },
+    {
+        "Name": "tikaiz",
+        "Email": "tikaiz@gmx.at"    
+    }
+  ],
+  "Website": "",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "LoadBefore": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "SubPlugins": []
+}
