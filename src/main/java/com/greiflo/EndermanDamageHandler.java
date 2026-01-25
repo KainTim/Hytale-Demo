@@ -1,14 +1,18 @@
 package com.greiflo;
 
-import com.hypixel.hytale.component.ArchetypeChunk;
-import com.hypixel.hytale.component.CommandBuffer;
-import com.hypixel.hytale.component.ComponentType;
-import com.hypixel.hytale.component.Store;
+import com.hypixel.hytale.component.*;
 import com.hypixel.hytale.component.query.Query;
 import com.hypixel.hytale.component.system.EntityEventSystem;
+import com.hypixel.hytale.logger.HytaleLogger;
+import com.hypixel.hytale.math.vector.Vector3d;
+import com.hypixel.hytale.math.vector.Vector3f;
+import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.modules.entity.component.DisplayNameComponent;
+import com.hypixel.hytale.server.core.modules.entity.component.PositionDataComponent;
 import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
 import com.hypixel.hytale.server.core.modules.entity.damage.Damage;
+import com.hypixel.hytale.server.core.modules.entity.item.ItemComponent;
+import com.hypixel.hytale.server.core.modules.entity.item.PickupItemComponent;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.checkerframework.checker.nullness.compatqual.NullableDecl;
@@ -27,8 +31,14 @@ public class EndermanDamageHandler extends EntityEventSystem<EntityStore, Damage
 
     @Override
     public void handle(int i, @NonNullDecl ArchetypeChunk<EntityStore> archetypeChunk, @NonNullDecl Store<EntityStore> store, @NonNullDecl CommandBuffer<EntityStore> commandBuffer, @NonNullDecl Damage damage) {
+
         var ref = archetypeChunk.getReferenceTo(i);
         TransformComponent transformComponent = store.getComponent(ref, TransformComponent.getComponentType());
+        var itemstack = new ItemStack("Rock_Stone", 64, null);
+        Holder<EntityStore> drops = ItemComponent.generateItemDrop(store, itemstack, transformComponent.getPosition().clone(), Vector3f.ZERO,0,0,0);
+
+        commandBuffer.addEntity(drops, AddReason.SPAWN);
+
         EndermanComponent endermanTeleportComponent = store.getComponent(ref, endermanComponentType);
 
         var entityName = store.getComponent(ref, DisplayNameComponent.getComponentType());
