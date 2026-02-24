@@ -5,18 +5,17 @@
   "Description": "Enderman Plugin",
   "Authors": [
     {
-      "Name": "greiflo",
-      "Email": "grflo7228@gmail.com"
-    },
-    {
-      "Name": "tikaiz",
-      "Email": "tikaiz@gmx.at"
+      "Name": "It's you!"
     }
   ],
   "Website": "",
-  "ServerVersion": "*",
-  "Dependencies": {},
-  "OptionalDependencies": {},
+  "ServerVersion": "2026.02.19-1a311a592",
+  "Dependencies": {
+
+  },
+  "OptionalDependencies": {
+
+  },
   "DisabledByDefault": false,
   "IncludesAssetPack": false,
   "Main": "com.greiflo.EndermanPlugin"
